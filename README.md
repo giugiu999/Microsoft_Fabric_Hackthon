@@ -77,6 +77,7 @@ To start the web application and interact with it to get your tailored study pla
 
    Use the web interface to input your data and find out your personalized study plan!
 
+Here's a demo video for the application [Click here to watch the demo video](https://youtu.be/K6gqKyZpGsI)
 Now you can explore the application to see the personalized study plans generated based on your input.
 
 
