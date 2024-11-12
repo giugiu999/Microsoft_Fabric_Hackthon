@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Your Study Plan</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <link rel="apple-touch-icon" sizes="200x200" href="{{ url_for('static', filename='logo/android-chrome-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='logo/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='logo/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='logo/site.webmanifest') }}">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Your Personalized Study Plan</h1>
+
+        <div class="student-info">
+            <h2>Student Profile</h2>
+            <p><strong>Learning Pace:</strong> {{ learning_pace }}</p>
+            <p><strong>Average Score:</strong> {{ average_score }}</p>
+            <p><strong>Student Level:</strong> {{ student_level }}</p>
+        </div>
+
+        <!-- Study Plan Content -->
+        <div class="study-plan-section">
+            <pre><p>{{ study_plan|safe }}</p></pre> <!-- Using pre tag to preserve line breaks -->
+        </div>
+        
+        <!-- Button to generate another plan -->
+       <div class="button-section">
+            <a href="{{ url_for('index') }}" class="generate-button">Generate Another Plan</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Plan Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="apple-touch-icon" sizes="200x200" href="{{ url_for('static', filename='logo/android-chrome-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='logo/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='logo/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='logo/site.webmanifest') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">Study Plan Generator</div>
+        <div class="nav-links">
+            <a href="https://github.com/Cyl200215/Microsoft_Fabric_Hackthon" target="_blank">
+                <button>Our code</button>
+            </a>
+            <a href="" target="_blank">
+                <button>Devpost</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Centered Form Container -->
+    <div class="form-container">
+        <h1>Study Plan Generator</h1>
+        <form action="{{ url_for('generate') }}" method="post">
+
+            <!-- Sex -->
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="0" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <select id="address" name="address" required>
+                    <option value="U">Urban</option>
+                    <option value="R">Rural</option>
+                </select>
+            </div>
+
+            <!-- Family Size -->
+            <div class="form-group">
+                <label for="famsize">Family Size:</label>
+                <select id="famsize" name="famsize" required>
+                    <option value="LE3">Less than or equal to 3</option>
+                    <option value="GT3">Greater than 3</option>
+                </select>
+            </div>
+
+            <!-- Parental Status -->
+            <div class="form-group">
+                <label for="Pstatus">Parental Status:</label>
+                <select id="Pstatus" name="Pstatus" required>
+                    <option value="T">Together</option>
+                    <option value="A">Apart</option>
+                </select>
+            </div>
+
+            <!-- Mother's Education Level -->
+            <div class="form-group">
+                <label for="Medu">Mother's Education Level:</label>
+                <select id="Medu" name="Medu" required>
+                    <option value="0">None</option>
+                    <option value="1">Primary</option>
+                    <option value="2">5th-9th Grade</option>
+                    <option value="3">High School</option>
+                    <option value="4">Bachelor's or Higher</option>
+                </select>
+            </div>
+
+            <!-- Father's Education Level -->
+            <div class="form-group">
+                <label for="Fedu">Father's Education Level:</label>
+                <select id="Fedu" name="Fedu" required>
+                    <option value="0">None</option>
+                    <option value="1">Primary</option>
+                    <option value="2">5th-9th Grade</option>
+                    <option value="3">High School</option>
+                    <option value="4">Bachelor's or Higher</option>
+                </select>
+            </div>
+
+            <!-- Mother's Job -->
+            <div class="form-group">
+                <label for="Mjob">Mother's Job:</label>
+                <select id="Mjob" name="Mjob" required>
+                    <option value="teacher">Teacher</option>
+                    <option value="health">Health Care</option>
+                    <option value="services">Service Sector</option>
+                    <option value="at_home">At Home</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Father's Job -->
+            <div class="form-group">
+                <label for="Fjob">Father's Job:</label>
+                <select id="Fjob" name="Fjob" required>
+                    <option value="teacher">Teacher</option>
+                    <option value="health">Health Care</option>
+                    <option value="services">Service Sector</option>
+                    <option value="at_home">At Home</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Reason for School Choice -->
+            <div class="form-group">
+                <label for="reason">Reason for School Choice:</label>
+                <select id="reason" name="reason" required>
+                    <option value="home">Close to Home</option>
+                    <option value="reputation">School Reputation</option>
+                    <option value="course">Course Preference</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Guardian -->
+            <div class="form-group">
+                <label for="guardian">Guardian:</label>
+                <select id="guardian" name="guardian" required>
+                    <option value="mother">Mother</option>
+                    <option value="father">Father</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Travel Time -->
+            <div class="form-group">
+                <label for="traveltime">Travel Time:</label>
+                <select id="traveltime" name="traveltime" required>
+                    <option value="1">1 hour or less</option>
+                    <option value="2">1-2 hours</option>
+                    <option value="3">2-3 hours</option>
+                    <option value="4">More than 3 hours</option>
+                </select>
+            </div>
+
+            <!-- Weekly Study Time -->
+            <div class="form-group">
+                <label for="studytime">Weekly Study Time:</label>
+                <select id="studytime" name="studytime" required>
+                    <option value="1">Less than 5 hours</option>
+                    <option value="2">5-10 hours</option>
+                    <option value="3">10-15 hours</option>
+                    <option value="4">More than 15 hours</option>
+                </select>
+            </div>
+
+            <!-- Past Class Failures -->
+            <div class="form-group">
+                <label for="failures">Past Class Failures:</label>
+                <input type="number" id="failures" name="failures" min="0" required>
+            </div>
+
+            <!-- School Support -->
+            <div class="form-group">
+                <label for="schoolsup">School Support:</label>
+                <select id="schoolsup" name="schoolsup" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Family Support -->
+            <div class="form-group">
+                <label for="famsup">Family Support:</label>
+                <select id="famsup" name="famsup" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Extra Paid Classes -->
+            <div class="form-group">
+                <label for="paid">Extra Paid Classes:</label>
+                <select id="paid" name="paid" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Extracurricular Activities -->
+            <div class="form-group">
+                <label for="activities">Extracurricular Activities:</label>
+                <select id="activities" name="activities" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Attended Nursery -->
+            <div class="form-group">
+                <label for="nursery">Attended Nursery:</label>
+                <select id="nursery" name="nursery" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Plans for Higher Education -->
+            <div class="form-group">
+                <label for="higher">Plans for Higher Education:</label>
+                <select id="higher" name="higher" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Internet Access at Home -->
+            <div class="form-group">
+                <label for="internet">Internet Access at Home:</label>
+                <select id="internet" name="internet" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Romantic Relationship -->
+            <div class="form-group">
+                <label for="romantic">In a Romantic Relationship:</label>
+                <select id="romantic" name="romantic" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Family Relationship Quality -->
+            <div class="form-group">
+                <label for="famrel">Family Relationship Quality (1-5):</label>
+                <input type="number" id="famrel" name="famrel" min="1" max="5" required>
+            </div>
+
+            <!-- Free Time -->
+            <div class="form-group">
+                <label for="freetime">Free Time (1-5):</label>
+                <input type="number" id="freetime" name="freetime" min="1" max="5" required>
+            </div>
+
+            <!-- Going Out with Friends -->
+            <div class="form-group">
+                <label for="goout">Going Out with Friends (1-5):</label>
+                <input type="number" id="goout" name="goout" min="1" max="5" required>
+            </div>
+
+            <!-- Workday Alcohol Consumption -->
+            <div class="form-group">
+                <label for="Dalc">Workday Alcohol Consumption (1-5):</label>
+                <input type="number" id="Dalc" name="Dalc" min="1" max="5" required>
+            </div>
+
+            <!-- Weekend Alcohol Consumption -->
+            <div class="form-group">
+                <label for="Walc">Weekend Alcohol Consumption (1-5):</label>
+                <input type="number" id="Walc" name="Walc" min="1" max="5" required>
+            </div>
+
+            <!-- Health Status -->
+            <div class="form-group">
+                <label for="health">Health Status (1-5):</label>
+                <input type="number" id="health" name="health" min="1" max="5" required>
+            </div>
+
+            <!-- Absences -->
+            <div class="form-group">
+                <label for="absences">Absences:</label>
+                <input type="number" id="absences" name="absences" min="0" required>
+            </div>
+
+            <!-- Ethnic Group -->
+            <div class="form-group">
+                <label for="EthnicGroup">Ethnic Group:</label>
+                <select id="EthnicGroup" name="EthnicGroup" required>
+                    <option value="Group A">Group A</option>
+                    <option value="Group B">Group B</option>
+                    <option value="Group C">Group C</option>
+                    <option value="Group D">Group D</option>
+                    <option value="Group E">Group E</option>
+                </select>
+            </div>
+
+            <!-- Lunch Type -->
+            <div class="form-group">
+                <label for="LunchType">Lunch Type:</label>
+                <select id="LunchType" name="LunchType" required>
+                    <option value="Standard">Standard</option>
+                    <option value="Free">Free</option>
+                </select>
+            </div>
+
+            <!-- Test Preparation -->
+            <div class="form-group">
+                <label for="TestPrep">Test Preparation:</label>
+                <select id="TestPrep" name="TestPrep" required>
+                    <option value="None">None</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+
+            <!-- Parent Marital Status -->
+            <div class="form-group">
+                <label for="ParentMaritalStatus">Parent Marital Status:</label>
+                <select id="ParentMaritalStatus" name="ParentMaritalStatus" required>
+                    <option value="married">Married</option>
+                    <option value="single">Single</option>
+                    <option value="widowed">Widowed</option>
+                    <option value="divorced">Divorced</option>
+                </select>
+            </div>
+
+            <!-- Practice Sport -->
+            <div class="form-group">
+                <label for="PracticeSport">Practice Sport:</label>
+                <select id="PracticeSport" name="PracticeSport" required>
+                    <option value="never">Never</option>
+                    <option value="sometimes">Sometimes</option>
+                    <option value="regularly">Regularly</option>
+                </select>
+            </div>
+
+            <!-- Is First Child -->
+            <div class="form-group">
+                <label for="IsFirstChild">Is First Child:</label>
+                <select id="IsFirstChild" name="IsFirstChild" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Weekly Study Hours -->
+            <div class="form-group">
+                <label for="WklyStudyHours">Weekly Study Hours:</label>
+                <select id="WklyStudyHours" name="WklyStudyHours" required>
+                    <option value="less than 5hrs">Less than 5 hours</option>
+                    <option value="between 5 and 10hrs">Between 5 and 10 hours</option>
+                    <option value="more than 10hrs">More than 10 hours</option>
+                </select>
+            </div>
+
+            <!-- Math Score -->
+            <div class="form-group">
+                <label for="MathScore">Math Score:</label>
+                <input type="number" id="MathScore" name="MathScore" required>
+            </div>
+
+            <!-- Reading Score -->
+            <div class="form-group">
+                <label for="ReadingScore">Reading Score:</label>
+                <input type="number" id="ReadingScore" name="ReadingScore" required>
+            </div>
+
+            <!-- Writing Score -->
+            <div class="form-group">
+                <label for="WritingScore">Writing Score:</label>
+                <input type="number" id="WritingScore" name="WritingScore" required>
+            </div>
+
+            <!-- Parental Education -->
+            <div class="form-group">
+                <label for="ParentalEducation">Parental Education:</label>
+                <select id="ParentalEducation" name="ParentalEducation" required>
+                    <option value="HighSchool">High School</option>
+                    <option value="SomeCollege">Some College</option>
+                    <option value="AssociateDegree">Associate Degree</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                </select>
+            </div>
+
+            <!-- Tutoring -->
+            <div class="form-group">
+                <label for="Tutoring">Tutoring:</label>
+                <select id="Tutoring" name="Tutoring" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <!-- Parental Support -->
+            <div class="form-group">
+                <label for="ParentalSupport">Parental Support:</label>
+                <select id="ParentalSupport" name="ParentalSupport" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <!-- Additional Absences -->
+            <div class="form-group">
+                <label for="Absences">Additional Absences:</label>
+                <input type="number" id="Absences" name="Absences" required>
+            </div>
+
+            <!-- Extracurricular -->
+            <div class="form-group">
+                <label for="Extracurricular">Extracurricular:</label>
+                <select id="Extracurricular" name="Extracurricular" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <!-- GPA -->
+            <div class="form-group">
+                <label for="GPA">GPA:</label>
+                <input type="number" id="GPA" name="GPA" step="0.1" required>
+            </div>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Generate Study Plan">
+        </form>
+    </div>
+</body>
+</html>
